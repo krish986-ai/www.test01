@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Cart</title>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            function checkPassword() {
+                let password = "74569852";
+                if (sessionStorage.getItem("authenticated")) return;
+                let userInput = prompt("Enter Password to Access the Website:");
+                if (userInput !== password) {
+                    alert("Incorrect Password! Access Denied.");
+                    window.location.href = "about:blank"; 
+                } else {
+                    sessionStorage.setItem("authenticated", "true");
+                }
+            }
+            checkPassword();
+        </script>
+        <style>
+            @media (max-width: 1024px) {
+                body { font-size: 14px; }
+                header { font-size: 18px; }
+            }
+            @media (max-width: 600px) {
+                body { font-size: 12px; }
+                .product-container { grid-template-columns: repeat(2, 1fr); }
+                .product img { width: 80px; }
+                header { font-size: 16px; }
+            }
+        </style>
+    </head>
+<body>
+
+    <header>Your Shopping Cart</header>
+    
+    <!-- Cart Items -->
+    <div id="cartItemsContainer"></div>
+
+    <!-- Order Summary Section -->
+    <div id="orderDetailsContainer">
+        <h3>Order Summary</h3>
+
+        <!-- Input Fields for Customer Details -->
+        <input type="text" id="customerName" placeholder="Enter Your Name">
+        <input type="text" id="customerPhone" placeholder="Enter Mobile Number">
+        <input type="text" id="customerAddress" placeholder="Enter Your Address">
+
+        <!-- Order Details -->
+        <div id="orderDetailsDisplay"></div> 
+
+        <!-- Buttons -->
+        <div id="buttonContainer">
+            <button id="copyOrderBtn" onclick="copyOrderDetails()" style="display:none;">
+                Copy Order Details
+            </button>
+            <button id="generateOrderBtn" onclick="generateOrderID()" style="display:none;">
+                Generate Order ID
+            </button>
+            <button id="shareOrderBtn" onclick="shareOnWhatsApp()" style="display:none;">
+                Share on WhatsApp
+            </button>
+        </div>        
+    </div>
+
+    <!-- Back to Shopping Button -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="goBack()">Back to Shopping</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

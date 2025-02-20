@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function checkPassword() {
+            let password = "74569852";
+            if (sessionStorage.getItem("authenticated")) return;
+            let userInput = prompt("Enter Password to Access the Website:");
+            if (userInput !== password) {
+                alert("Incorrect Password! Access Denied.");
+                window.location.href = "about:blank"; 
+            } else {
+                sessionStorage.setItem("authenticated", "true");
+            }
+        }
+        checkPassword();
+    </script>
+    <style>
+        @media (max-width: 1024px) {
+            body { font-size: 14px; }
+            .product-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .product img { width: 100px; height: auto; }
+            header { font-size: 18px; }
+        }
+        @media (max-width: 600px) {
+            body { font-size: 12px; }
+            .product-container { grid-template-columns: repeat(2, 1fr); }
+            .product img { width: 80px; }
+            header { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    My Tech Shopping
+    <a href="cart.html" id="cartIcon">
+        <img src="assets/cart_icon.png" alt="Cart" />
+    </a>
+    <input type="text" id="searchBar" placeholder="Search for products..." oninput="searchProducts()">
+</header>
+
+<div class="product-container">
+    <!-- Existing Products -->
+    <div class="product">
+        <img src="assets/laptop.jpg" alt="Laptop">
+        <h2>Gaming Laptop</h2>
+        <p>Price: ₹75,000</p>
+        <button onclick="addToCart('LAP001', 75000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/phone.jpg" alt="Smartphone">
+        <h2>Flagship Smartphone</h2>
+        <p>Price: ₹50,000</p>
+        <button onclick="addToCart('PHONE001', 50000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/headphones.jpg" alt="Headphones">
+        <h2>Wireless Headphones</h2>
+        <p>Price: ₹5,000</p>
+        <button onclick="addToCart('HP001', 5000)">Add to Cart</button>
+    </div>
+
+    <!-- New Products -->
+    <div class="product">
+        <img src="assets/gaming_mouse.jpg" alt="Gaming Mouse">
+        <h2>Gaming Mouse</h2>
+        <p>Price: ₹2,500</p>
+        <button onclick="addToCart('MOUSE001', 2500)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/mechanical_keyboard.jpg" alt="Mechanical Keyboard">
+        <h2>Mechanical Keyboard</h2>
+        <p>Price: ₹4,000</p>
+        <button onclick="addToCart('KEYBOARD001', 4000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/gaming_monitor.jpg" alt="Gaming Monitor">
+        <h2>Gaming Monitor</h2>
+        <p>Price: ₹18,000</p>
+        <button onclick="addToCart('MONITOR001', 18000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/smartwatch.jpg" alt="Smartwatch">
+        <h2>Smartwatch</h2>
+        <p>Price: ₹7,000</p>
+        <button onclick="addToCart('SMARTWATCH001', 7000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/bluetooth_speaker.jpg" alt="Bluetooth Speaker">
+        <h2>Bluetooth Speaker</h2>
+        <p>Price: ₹3,500</p>
+        <button onclick="addToCart('SPEAKER001', 3500)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/wireless_earbuds.jpg" alt="Wireless Earbuds">
+        <h2>Wireless Earbuds</h2>
+        <p>Price: ₹2,200</p>
+        <button onclick="addToCart('EARBUDS001', 2200)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/external_hard_drive.jpg" alt="External Hard Drive">
+        <h2>External Hard Drive (1TB)</h2>
+        <p>Price: ₹5,500</p>
+        <button onclick="addToCart('HDD001', 5500)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/smart_tv.jpg" alt="Smart TV">
+        <h2>Smart TV (4K UHD, 50-inch)</h2>
+        <p>Price: ₹45,000</p>
+        <button onclick="addToCart('TV001', 45000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/vr_headset.jpg" alt="VR Headset">
+        <h2>VR Headset</h2>
+        <p>Price: ₹15,000</p>
+        <button onclick="addToCart('VR001', 15000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/drone_camera.jpg" alt="Drone Camera">
+        <h2>Drone Camera</h2>
+        <p>Price: ₹25,000</p>
+        <button onclick="addToCart('DRONE001', 25000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/power_bank.jpg" alt="Power Bank">
+        <h2>Power Bank (20,000mAh)</h2>
+        <p>Price: ₹3,000</p>
+        <button onclick="addToCart('POWERBANK001', 3000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="assets/gaming_chair.jpg" alt="Gaming Chair">
+        <h2>Gaming Chair</h2>
+        <p>Price: ₹12,000</p>
+        <button onclick="addToCart('CHAIR001', 12000)">Add to Cart</button>
+    </div>
+</div>
+
+<footer>
+    <button onclick="viewCart()">View Cart</button>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
